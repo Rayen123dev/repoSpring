@@ -12,14 +12,27 @@ import lombok.Setter;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_user;
+    private Long idUser;
+    private long numero;
+    private String access;
+    private String nom;
+    private int age;
+    private String email;
+    private String mdp;
+    private String Link_Image;
+    private String adresse;
+    private String telephone;
+    @Enumerated(EnumType.STRING)
+    private Role role;
+    private Boolean is_verified;
+
 
     public Long getId_user() {
-        return id_user;
+        return idUser;
     }
 
     public void setId_user(Long id_user) {
-        this.id_user = id_user;
+        this.idUser = id_user;
     }
 
     public long getNumero() {
@@ -109,19 +122,6 @@ public class User {
     public void setIs_verified(Boolean is_verified) {
         this.is_verified = is_verified;
     }
-
-    private long numero;
-    private String access;
-    private String nom;
-    private int age;
-    private String email;
-    private String mdp;
-    private String Link_Image;
-    private String adresse;
-    private String telephone;
-    @Enumerated(EnumType.STRING)
-    private Role role;
-    private Boolean is_verified;
 
 
     public User() {}

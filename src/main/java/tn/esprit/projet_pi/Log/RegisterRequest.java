@@ -10,6 +10,15 @@ public class RegisterRequest {
     public String nom;
     public String email;
     public Role role;
+    public int age;
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
 
     public Role getRole() {
         return role;

@@ -38,32 +38,40 @@ public class UserService implements UserInterface{
 
     @Override
     public List<User> getAllUsers() {
-        return List.of();
+        return userRepo.findAll();
     }
 
     @Override
-    public User getUserById(int id) {
-        return null;
+    public User getUserById(Long id) {
+        return userRepo.findById(Math.toIntExact(id)).get();
     }
 
     @Override
     public User getUserByEmail(String email) {
-        return null;
+        return userRepo.findByEmail(email).get();
     }
 
     @Override
     public User getUserByUsername(String username) {
-        return null;
+        return userRepo.findByNom(username).get();
     }
 
     @Override
-    public boolean updateUser(User user) {
-        return false;
+    public boolean updateUser(Long id, User updatedUser) {
+            return userRepo.findByidUser(id).map(user -> {
+                user.setNom(updatedUser.getNom());
+                user.setEmail(updatedUser.getEmail());
+                user.setAge(updatedUser.getAge());
+                userRepo.save(user);
+                return true;
+            }).orElse(false);
     }
 
     @Override
-    public boolean deleteUser(int id) {
-        return false;
+    public boolean deleteUser(Long id) {
+        User user = userRepo.findByidUser(id).get();
+        userRepo.delete(user);
+        return true;
     }
 
     @Override
